@@ -63,8 +63,8 @@ class MyFormsButtonsLayout extends StatelessWidget {
   }
 }
 
-class MyAppBarButtonLayout extends StatelessWidget {
-  const MyAppBarButtonLayout({
+class MyIconButtonLayout extends StatelessWidget {
+  const MyIconButtonLayout({
     super.key,
     required this.buttonIcon,
     this.onClick,

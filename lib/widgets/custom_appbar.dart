@@ -12,6 +12,7 @@ class MyCustomAppBar extends StatelessWidget {
     this.titleStyle = FontStyle.normal,
     this.titleSize = 30,
     this.horizontalPadding = 10,
+    this.blendMode = BlendMode.darken,
   });
 
   final double height;
@@ -23,12 +24,16 @@ class MyCustomAppBar extends StatelessWidget {
   final Widget? leadingWidget;
   final Widget? trailingWidget;
   final double horizontalPadding;
+  final BlendMode blendMode;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 0),
-      color: color,
+      decoration: BoxDecoration(
+        backgroundBlendMode: blendMode,
+        color: color,
+      ),
       height: height,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
