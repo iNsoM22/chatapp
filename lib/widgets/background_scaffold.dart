@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
 class MyCustomBackgroudScaffold extends StatelessWidget {
   const MyCustomBackgroudScaffold({
@@ -34,7 +34,7 @@ class MyCustomBackgroudScaffold extends StatelessWidget {
               backgroundBlendMode: blendMode,
             ),
           ),
-          SafeArea(child: child!)
+          SafeArea(child: child ?? Container())
         ],
       ),
     );

@@ -1,8 +1,8 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
-class MyCustomAppBar extends StatelessWidget {
+class MyCustomAppBar extends StatefulWidget {
   const MyCustomAppBar({
-    super.key,
+    Key? key,
     required this.height,
     this.title,
     this.leadingWidget,
@@ -13,7 +13,7 @@ class MyCustomAppBar extends StatelessWidget {
     this.titleSize = 30,
     this.horizontalPadding = 10,
     this.blendMode = BlendMode.darken,
-  });
+  }) : super(key: key);
 
   final double height;
   final String? title;
@@ -27,36 +27,43 @@ class MyCustomAppBar extends StatelessWidget {
   final BlendMode blendMode;
 
   @override
+  _MyCustomAppBarState createState() => _MyCustomAppBarState();
+}
+
+class _MyCustomAppBarState extends State<MyCustomAppBar> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 0),
+      padding: EdgeInsets.symmetric(
+          horizontal: widget.horizontalPadding, vertical: 0),
       decoration: BoxDecoration(
-        backgroundBlendMode: blendMode,
-        color: color,
+        backgroundBlendMode: widget.blendMode,
+        color: widget.color,
       ),
-      height: height,
+      height: widget.height,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (leadingWidget != null) leadingWidget!,
+          if (widget.leadingWidget != null) widget.leadingWidget!,
           const SizedBox(
             width: 28,
           ),
-          if (title != null)
+          if (widget.title != null)
             Expanded(
               flex: 10,
               child: Text(
-                title!,
+                widget.title!,
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                    color: titleColor,
-                    fontSize: titleSize,
-                    fontStyle: titleStyle,
+                    color: widget.titleColor,
+                    fontSize: widget.titleSize,
+                    fontStyle: widget.titleStyle,
                     fontWeight: FontWeight.w800),
               ),
             ),
-          if (trailingWidget != null) trailingWidget!,
-          if (title == null && trailingWidget == null) const Spacer(),
+          if (widget.trailingWidget != null) widget.trailingWidget!,
+          if (widget.title == null && widget.trailingWidget == null)
+            const Spacer(),
         ],
       ),
     );

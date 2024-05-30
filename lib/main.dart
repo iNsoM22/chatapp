@@ -2,6 +2,7 @@ import "package:chatapp/screens/account_creation_screen.dart";
 import "package:chatapp/screens/chat_screen.dart";
 import "package:chatapp/screens/homepage_screen.dart";
 import "package:chatapp/screens/login_screen.dart";
+import "package:chatapp/screens/profile_screen.dart";
 import "package:chatapp/screens/start_screen.dart";
 import "package:flutter/material.dart";
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         '/chatHomePage': (context) => const MyChatHomePage(),
         '/login': (context) => const MyLoginScreen(),
         '/signup': (context) => const MyAccountCreationScreen(),
-        '/chatbox:id': (context) => const MyChatScreenUI()
+        '/chatbox:id': (context) => const MyChatScreenUI(),
+        '/profile': (context) => const MyAccountProfileScreen(),
       },
     );
   }

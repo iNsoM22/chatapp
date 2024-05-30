@@ -3,9 +3,7 @@ import 'package:chatapp/widgets/buttons.dart';
 import 'package:chatapp/widgets/custom_appbar.dart';
 import 'package:chatapp/widgets/input_text_field.dart';
 import 'package:chatapp/widgets/message.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MyChatScreenUI extends StatefulWidget {
   const MyChatScreenUI({super.key});
@@ -36,7 +34,7 @@ class _MyChatScreenUIState extends State<MyChatScreenUI> {
               onClick: () => Navigator.pop(context),
             ),
           ),
-          Divider(
+          const Divider(
             height: 2,
             indent: 20,
             endIndent: 20,
