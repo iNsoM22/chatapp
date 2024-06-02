@@ -1,8 +1,11 @@
-import "package:chatapp/widgets/custom_appbar.dart";
+import "package:chatapp/screens/Forms/login_screen.dart";
+import "package:chatapp/screens/start_screen.dart";
 import "package:flutter/material.dart";
+import "package:page_transition/page_transition.dart";
 import "../../widgets/buttons.dart";
 import "../../widgets/input_text_field.dart";
 import "../../widgets/background_scaffold.dart";
+import "../../widgets/custom_appbar.dart";
 
 class MyAccountCreationScreen extends StatefulWidget {
   const MyAccountCreationScreen({super.key});
@@ -20,11 +23,12 @@ class _MyAccountCreationScreenState extends State<MyAccountCreationScreen> {
     return MyCustomBackgroudScaffold(
       backgroundDarken: 0.52,
       child: SingleChildScrollView(
+        padding: const EdgeInsets.only(left: 18, right: 20, bottom: 20),
         child: Column(
           children: [
             MyCustomAppBar(
-              height: height * 0.12,
-              horizontalPadding: 22,
+              height: height * 0.13,
+              horizontalPadding: 5,
               leadingWidget: MyIconButtonLayout(
                 buttonIcon: Icons.arrow_back,
                 onClick: () => Navigator.pop(context),
@@ -32,124 +36,134 @@ class _MyAccountCreationScreenState extends State<MyAccountCreationScreen> {
                 iconWeight: FontWeight.w700,
               ),
             ),
-            Container(
-              alignment: Alignment.topLeft,
-              padding: const EdgeInsets.only(left: 30),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            const ListTile(
+              title: Text("Sign Up"),
+              subtitle: Text("Simple and easy."),
+              titleTextStyle: TextStyle(
+                fontStyle: FontStyle.italic,
+                fontSize: 42,
+                fontWeight: FontWeight.w800,
+              ),
+              subtitleTextStyle: TextStyle(
+                fontStyle: FontStyle.italic,
+                fontSize: 21,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            Form(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Sign Up",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontSize: 36,
-                      fontWeight: FontWeight.w800,
-                    ),
+                  const SizedBox(
+                    height: 15,
                   ),
-                  Text(
-                    "Simple and easy.",
-                    style: TextStyle(
+                  MyTextInputField(
+                    prefixIcon: true,
+                    imagePath: "assets/icons/user.png",
+                    textHint: "Username",
+                    keyboardType: TextInputType.name,
+                    obscureText: false,
+                    bgColor: Colors.grey.shade200,
+                    padH: 0,
+                    padV: 0,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  MyTextInputField(
+                    prefixIcon: true,
+                    imagePath: "assets/icons/mail.png",
+                    textHint: "Email",
+                    keyboardType: TextInputType.emailAddress,
+                    bgColor: Colors.grey.shade200,
+                    obscureText: false,
+                    padH: 0,
+                    padV: 0,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  MyTextInputField(
+                    prefixIcon: true,
+                    imagePath: "assets/icons/lock.png",
+                    textHint: "Password",
+                    keyboardType: TextInputType.text,
+                    obscureText: true,
+                    bgColor: Colors.grey.shade200,
+                    padH: 0,
+                    padV: 0,
+                  ),
+                  const SizedBox(
+                    height: 35,
+                  ),
+                  MyFormsButtonsLayout(
+                    text: "Sign Up",
+                    bgColor: Colors.black,
+                    fgColor: Colors.white,
+                    width: 100,
+                    height: 10,
+                    boxShadow: true,
+                    suffixIcon: const Icon(
+                      Icons.arrow_forward,
                       color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontSize: 19,
-                      fontWeight: FontWeight.w400,
+                    ),
+                    onTap: () => Navigator.pushAndRemoveUntil(
+                      context,
+                      PageTransition(
+                        child: const MyStartScreen(),
+                        type: PageTransitionType.fade,
+                        duration: const Duration(
+                          milliseconds: 500,
+                        ),
+                      ),
+                      (route) => false,
                     ),
                   ),
                 ],
-              ),
-            ),
-            const Form(
-              child: Padding(
-                padding: EdgeInsets.all(15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 15,
-                    ),
-                    MyTextInputField(
-                      prefixIcon: true,
-                      imagePath: "assets/icons/user.png",
-                      textHint: "Username",
-                      keyboardType: TextInputType.name,
-                      obscureText: false,
-                      padH: 0,
-                      padV: 0,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    MyTextInputField(
-                      prefixIcon: true,
-                      imagePath: "assets/icons/mail.png",
-                      textHint: "Email",
-                      keyboardType: TextInputType.emailAddress,
-                      obscureText: false,
-                      padH: 0,
-                      padV: 0,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    MyTextInputField(
-                      prefixIcon: true,
-                      imagePath: "assets/icons/lock.png",
-                      textHint: "Password",
-                      keyboardType: TextInputType.text,
-                      obscureText: true,
-                      padH: 0,
-                      padV: 0,
-                    ),
-                    SizedBox(
-                      height: 35,
-                    ),
-                    MyFormsButtonsLayout(
-                      text: "Let's Chat",
-                      bgColor: Colors.black,
-                      fgColor: Colors.white,
-                      width: 90,
-                      height: 10,
-                      boxShadow: true,
-                      suffixIcon: Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
               ),
             ),
             SizedBox(
-              height: height * 0.25,
+              height: height * 0.27,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Already a User, ",
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Don't have an Account? ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        child: const MyLoginScreen(),
+                        type: PageTransitionType.fade,
+                        duration: const Duration(
+                          milliseconds: 500,
+                        ),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Sign Up Now.",
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
+                      color: Color.fromARGB(255, 91, 173, 213),
+                      fontWeight: FontWeight.w800,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 18,
+                      decoration: TextDecoration.underline,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () => Navigator.popAndPushNamed(context, '/login'),
-                    child: Text(
-                      "Sign In now.",
-                      style: TextStyle(
-                        color: Colors.blueGrey.shade400,
-                        fontWeight: FontWeight.w900,
-                        decoration: TextDecoration.underline,
-                        fontStyle: FontStyle.italic,
-                        fontSize: 17,
-                      ),
-                    ),
-                  )
-                ],
-              ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
             ),
           ],
         ),
