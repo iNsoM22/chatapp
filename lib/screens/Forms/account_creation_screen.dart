@@ -1,8 +1,8 @@
 import "package:chatapp/widgets/custom_appbar.dart";
 import "package:flutter/material.dart";
-import "../widgets/buttons.dart";
-import "../widgets/input_text_field.dart";
-import "../widgets/background_scaffold.dart";
+import "../../widgets/buttons.dart";
+import "../../widgets/input_text_field.dart";
+import "../../widgets/background_scaffold.dart";
 
 class MyAccountCreationScreen extends StatefulWidget {
   const MyAccountCreationScreen({super.key});
@@ -74,6 +74,8 @@ class _MyAccountCreationScreenState extends State<MyAccountCreationScreen> {
                       textHint: "Username",
                       keyboardType: TextInputType.name,
                       obscureText: false,
+                      padH: 0,
+                      padV: 0,
                     ),
                     SizedBox(
                       height: 15,
@@ -84,6 +86,8 @@ class _MyAccountCreationScreenState extends State<MyAccountCreationScreen> {
                       textHint: "Email",
                       keyboardType: TextInputType.emailAddress,
                       obscureText: false,
+                      padH: 0,
+                      padV: 0,
                     ),
                     SizedBox(
                       height: 15,
@@ -94,6 +98,8 @@ class _MyAccountCreationScreenState extends State<MyAccountCreationScreen> {
                       textHint: "Password",
                       keyboardType: TextInputType.text,
                       obscureText: true,
+                      padH: 0,
+                      padV: 0,
                     ),
                     SizedBox(
                       height: 35,

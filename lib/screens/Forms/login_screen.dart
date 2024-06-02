@@ -1,9 +1,9 @@
-import "package:chatapp/screens/homepage_screen.dart";
+import "package:chatapp/screens/Dashboard/homepage_screen.dart";
 import "package:chatapp/widgets/custom_appbar.dart";
 import "package:flutter/material.dart";
-import "../widgets/buttons.dart";
-import "../widgets/input_text_field.dart";
-import "../widgets/background_scaffold.dart";
+import "../../widgets/buttons.dart";
+import "../../widgets/input_text_field.dart";
+import "../../widgets/background_scaffold.dart";
 
 class MyLoginScreen extends StatefulWidget {
   const MyLoginScreen({super.key});
@@ -85,6 +85,8 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
                         textHint: "Username",
                         keyboardType: TextInputType.name,
                         obscureText: false,
+                        padH: 0,
+                        padV: 0,
                       ),
                       const SizedBox(
                         height: 18,
@@ -95,6 +97,8 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
                         textHint: "Password",
                         keyboardType: TextInputType.text,
                         obscureText: true,
+                        padH: 0,
+                        padV: 0,
                       ),
                       const SizedBox(
                         height: 35,

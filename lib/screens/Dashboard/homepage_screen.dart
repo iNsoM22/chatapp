@@ -4,7 +4,7 @@ import 'package:chatapp/widgets/chatbox_creator.dart';
 import 'package:chatapp/widgets/custom_appbar.dart';
 import 'package:chatapp/widgets/recent_avators.dart';
 import 'package:chatapp/widgets/sidebar_widget.dart';
-import '../widgets/background_scaffold.dart';
+import '../../widgets/background_scaffold.dart';
 
 class MyChatHomePage extends StatefulWidget {
   const MyChatHomePage({super.key});

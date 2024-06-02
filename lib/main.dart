@@ -1,8 +1,8 @@
-import "package:chatapp/screens/account_creation_screen.dart";
-import "package:chatapp/screens/chat_screen.dart";
-import "package:chatapp/screens/homepage_screen.dart";
-import "package:chatapp/screens/login_screen.dart";
-import "package:chatapp/screens/profile_screen.dart";
+import "package:chatapp/screens/Forms/account_creation_screen.dart";
+import "package:chatapp/screens/Dashboard/Chats/chat_screen.dart";
+import "package:chatapp/screens/Dashboard/homepage_screen.dart";
+import "package:chatapp/screens/Forms/login_screen.dart";
+import "package:chatapp/screens/Dashboard/Account/profile_screen.dart";
 import "package:chatapp/screens/start_screen.dart";
 import "package:flutter/material.dart";
 

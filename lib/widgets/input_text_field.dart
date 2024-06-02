@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
 class MyTextInputField extends StatelessWidget {
   const MyTextInputField({
@@ -6,32 +6,39 @@ class MyTextInputField extends StatelessWidget {
     required this.textHint,
     required this.keyboardType,
     required this.obscureText,
-    required this.prefixIcon,
+    this.prefixIcon = false,
     this.onChangedFunction,
     this.imagePath,
     this.trailingButton,
     this.onTap,
-    this.inputFieldHeight = 55,
+    this.isEnabled = true,
+    this.padH = 20.0,
+    this.padV = 60.0,
+    this.bgColor = Colors.grey,
   });
 
   final TextInputType keyboardType;
   final String textHint;
   final bool obscureText;
-  final bool? prefixIcon;
+  final bool prefixIcon;
   final Function(String)? onChangedFunction;
   final String? imagePath;
   final Widget? trailingButton;
   final VoidCallback? onTap;
-  final double inputFieldHeight;
+  final double padH;
+  final double padV;
+  final bool isEnabled;
+  final Color bgColor;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: SizedBox(
-            height: inputFieldHeight,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: padV, horizontal: padH),
+      child: Row(
+        children: [
+          Expanded(
             child: TextFormField(
+              enabled: isEnabled,
               keyboardType: keyboardType,
               obscureText: obscureText,
               textAlign: TextAlign.left,
@@ -39,8 +46,8 @@ class MyTextInputField extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 hintText: textHint,
-                fillColor: Colors.grey.shade200,
-                prefixIcon: imagePath != null
+                fillColor: bgColor,
+                prefixIcon: prefixIcon && imagePath != null
                     ? Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Image.asset(
@@ -51,22 +58,23 @@ class MyTextInputField extends StatelessWidget {
                         ),
                       )
                     : null,
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(28)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(28),
+                ),
               ),
               onChanged: onChangedFunction,
             ),
           ),
-        ),
-        if (trailingButton != null)
-          Padding(
-            padding: const EdgeInsets.only(left: 7, right: 5),
-            child: GestureDetector(
-              onTap: onTap,
-              child: trailingButton!,
+          if (trailingButton != null)
+            Padding(
+              padding: const EdgeInsets.only(left: 7, right: 5),
+              child: GestureDetector(
+                onTap: onTap,
+                child: trailingButton!,
+              ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }
