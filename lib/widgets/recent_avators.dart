@@ -26,7 +26,7 @@ class MyRecentAvatarsRowWidget extends StatelessWidget {
 
   Container _avatarCreator(String imagePath, String avatarName) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12),
+      margin: const EdgeInsets.symmetric(horizontal: 14),
       padding: const EdgeInsets.only(bottom: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
