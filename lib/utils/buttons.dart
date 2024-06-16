@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyFormsButtonsLayout extends StatelessWidget {
-  const MyFormsButtonsLayout({
+class MyTextButtonLayout extends StatelessWidget {
+  const MyTextButtonLayout({
     super.key,
     required this.bgColor,
     required this.fgColor,

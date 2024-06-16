@@ -1,13 +1,26 @@
-import "package:chatapp/screens/Forms/account_creation_screen.dart";
-import "package:chatapp/screens/Dashboard/Chats/chat_screen.dart";
-import "package:chatapp/screens/Dashboard/homepage_screen.dart";
-import "package:chatapp/screens/Forms/login_screen.dart";
-import "package:chatapp/screens/Dashboard/Account/profile_screen.dart";
-import "package:chatapp/screens/start_screen.dart";
-import "package:flutter/material.dart";
+import 'package:chatapp/services/auth_service.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:chatapp/components/auth/screens/account_creation_screen.dart';
+import 'package:chatapp/components/messages/screens/chat_screen.dart';
+import 'package:chatapp/components/home/screens/homepage_screen.dart';
+import 'package:chatapp/components/auth/screens/login_screen.dart';
+import 'package:chatapp/components/profile/screens/profile_screen.dart';
+import 'package:chatapp/components/splash_screen/screens/start_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await Supabase.initialize(
+    url: 'https://ujbexzuqsgadyjpbdoyz.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqYmV4enVxc2dhZHlqcGJkb3l6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY3MjMyNTAsImV4cCI6MjAzMjI5OTI1MH0.wjAFYWGHAhSEymCc9WD6FIvwn3dkoMaKKrkl0G-vS4E',
+  );
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AuthService(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,6 +30,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ChatApp',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/',
       routes: {
         '/': (context) => const MyStartScreen(),
         '/chatHomePage': (context) => const MyChatHomePage(),

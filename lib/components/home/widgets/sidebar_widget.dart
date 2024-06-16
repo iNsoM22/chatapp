@@ -1,16 +1,17 @@
+import 'package:chatapp/components/profile/screens/profile_screen.dart';
+import 'package:chatapp/components/splash_screen/screens/start_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class MyCustomSideBarWidget extends StatefulWidget {
   const MyCustomSideBarWidget({
     super.key,
     this.userName = "Username",
     this.userImage = 'assets/images/Profile.png',
-    required this.onClose,
   });
 
   final String userName;
   final String userImage;
-  final VoidCallback onClose;
 
   @override
   State<MyCustomSideBarWidget> createState() => _MyCustomSideBarWidgetState();
@@ -20,6 +21,7 @@ class _MyCustomSideBarWidgetState extends State<MyCustomSideBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.grey.shade200,
       child: ListView(
         children: [
           DrawerHeader(
@@ -51,8 +53,13 @@ class _MyCustomSideBarWidgetState extends State<MyCustomSideBarWidget> {
           ListTile(
             title: GestureDetector(
               onTap: () {
-                widget.onClose(); // Call the callback to close the sidebar
-                Navigator.pushNamed(context, '/profile');
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  PageTransition(
+                      child: MyAccountProfileScreen(),
+                      type: PageTransitionType.fade),
+                );
               },
               child: Container(
                 padding:
@@ -75,9 +82,14 @@ class _MyCustomSideBarWidgetState extends State<MyCustomSideBarWidget> {
           ListTile(
             title: GestureDetector(
               onTap: () {
-                widget.onClose(); // Call the callback to close the sidebar
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/', (route) => false);
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  PageTransition(
+                    child: const MyStartScreen(),
+                    type: PageTransitionType.fade,
+                  ),
+                  (Route<dynamic> route) => false,
+                );
               },
               child: Container(
                 padding:

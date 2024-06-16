@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   supabase_flutter: ^2.5.4
   page_transition: ^2.1.0
+  form_validator: ^2.1.1
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,4 @@
-import "package:chatapp/widgets/chatbox_cards.dart";
+import "package:chatapp/components/home/widgets/chatbox_cards.dart";
 import "package:flutter/material.dart";
 
 // This function will be modified when Handling APIs

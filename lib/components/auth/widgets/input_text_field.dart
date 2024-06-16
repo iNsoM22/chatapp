@@ -1,0 +1,59 @@
+import 'package:chatapp/utils/custom_typedef.dart';
+import 'package:flutter/material.dart';
+
+class MyTextFormInputField extends StatelessWidget {
+  const MyTextFormInputField({
+    super.key,
+    required this.textHint,
+    required this.keyboardType,
+    required this.obscureText,
+    required this.validatorCallback,
+    this.controller,
+    this.imagePath,
+    this.prefixIcon = false,
+    this.isEnabled = true,
+    this.bgColor = Colors.grey,
+  });
+
+  final TextInputType keyboardType;
+  final String textHint;
+  final bool obscureText;
+  final bool prefixIcon;
+  final String? imagePath;
+  final bool isEnabled;
+  final Color bgColor;
+  final MyCustomValidatorCallback validatorCallback;
+  final TextEditingController? controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      enabled: isEnabled,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      textAlign: TextAlign.left,
+      style: const TextStyle(color: Colors.black),
+      decoration: InputDecoration(
+        filled: true,
+        hintText: textHint,
+        fillColor: bgColor,
+        prefixIcon: prefixIcon && imagePath != null
+            ? Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: Image.asset(
+                  imagePath!,
+                  repeat: ImageRepeat.noRepeat,
+                  height: 10,
+                  width: 10,
+                ),
+              )
+            : null,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(28),
+        ),
+      ),
+      validator: validatorCallback,
+    );
+  }
+}

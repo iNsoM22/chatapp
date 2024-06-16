@@ -1,4 +1,6 @@
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:flutter/widgets.dart";
 
 class MyChatBoxCard extends StatelessWidget {
   const MyChatBoxCard({
@@ -38,26 +40,30 @@ class MyChatBoxCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    cardName,
-                    style: const TextStyle(
-                      fontSize: 23,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Text(
+                      cardName,
+                      style: const TextStyle(
+                        fontSize: 23,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                   const SizedBox(
-                    height: 7,
+                    height: 6,
                   ),
-                  Text(
-                    cardDescription,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      overflow: TextOverflow.ellipsis,
+                  Expanded(
+                    child: Text(
+                      cardDescription,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      maxLines: 2,
                     ),
-                    maxLines: 2,
                   ),
                 ],
               ),

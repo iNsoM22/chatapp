@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyCustomAppBar extends StatefulWidget {
   const MyCustomAppBar({
-    Key? key,
+    super.key,
     required this.height,
     this.title,
     this.leadingWidget,
@@ -13,7 +13,7 @@ class MyCustomAppBar extends StatefulWidget {
     this.titleSize = 30,
     this.horizontalPadding = 10,
     this.blendMode = BlendMode.darken,
-  }) : super(key: key);
+  });
 
   final double height;
   final String? title;

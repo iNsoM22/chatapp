@@ -1,29 +1,31 @@
-import "package:chatapp/screens/Forms/account_creation_screen.dart";
-import "package:chatapp/widgets/background_interface.dart";
-import "package:chatapp/widgets/buttons.dart";
-import "package:flutter/material.dart";
-import "package:page_transition/page_transition.dart";
-import "Forms/login_screen.dart";
+import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:chatapp/components/auth/screens/account_creation_screen.dart';
+import 'package:chatapp/components/auth/screens/login_screen.dart';
+import 'package:chatapp/utils/background_interface.dart';
+import 'package:chatapp/utils/buttons.dart';
 
 class MyStartScreen extends StatelessWidget {
-  const MyStartScreen({super.key});
+  const MyStartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: MyCustomBackgroundStackWidget(
         backgroundDarken: 0.4,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: height * 0.27,
-            ),
+            SizedBox(height: height * 0.27),
             const Expanded(
               flex: 8,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Voxello",
@@ -35,6 +37,7 @@ class MyStartScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  SizedBox(height: 10),
                   Text(
                     "Create, Find, and Chat.",
                     textAlign: TextAlign.center,
@@ -55,24 +58,20 @@ class MyStartScreen extends StatelessWidget {
                 PageTransition(
                   child: const MyAccountCreationScreen(),
                   type: PageTransitionType.rightToLeft,
-                  duration: const Duration(
-                    milliseconds: 400,
-                  ),
+                  duration: const Duration(milliseconds: 400),
                 ),
               ),
-              child: const MyFormsButtonsLayout(
+              child: MyTextButtonLayout(
                 text: "Get Started",
                 bgColor: Colors.black,
                 fgColor: Colors.white,
                 height: 25,
-                width: 50,
+                width: width * 0.2,
                 roundedBorderRadius: 40,
                 boxShadow: true,
               ),
             ),
-            SizedBox(
-              height: height * 0.11,
-            ),
+            SizedBox(height: height * 0.11),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -87,11 +86,10 @@ class MyStartScreen extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     PageTransition(
-                        child: const MyLoginScreen(),
-                        type: PageTransitionType.rightToLeft,
-                        duration: const Duration(
-                          milliseconds: 400,
-                        )),
+                      child: const MyLoginScreen(),
+                      type: PageTransitionType.rightToLeft,
+                      duration: const Duration(milliseconds: 400),
+                    ),
                   ),
                   child: const Text(
                     "Log In",
@@ -103,12 +101,10 @@ class MyStartScreen extends StatelessWidget {
                       decoration: TextDecoration.underline,
                     ),
                   ),
-                )
+                ),
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
           ],
         ),
       ),
